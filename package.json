@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/Deadlift3008/lego-robot-remote-control#readme",
   "dependencies": {
-    "node-poweredup": "^8.0.5"
-  }
+    "node-poweredup": "8.0.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "cpu": ["x64"]
 }
