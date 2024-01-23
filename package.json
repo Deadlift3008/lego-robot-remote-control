@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Deadlift3008/lego-robot-remote-control/issues"
   },
-  "homepage": "https://github.com/Deadlift3008/lego-robot-remote-control#readme"
+  "homepage": "https://github.com/Deadlift3008/lego-robot-remote-control#readme",
+  "dependencies": {
+    "node-poweredup": "^8.0.5"
+  }
 }
