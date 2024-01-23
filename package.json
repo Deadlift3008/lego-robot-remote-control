@@ -1,0 +1,19 @@
+{
+  "name": "lego-robot-remote-control",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deadlift3008/lego-robot-remote-control.git"
+  },
+  "author": "deadlift3008",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deadlift3008/lego-robot-remote-control/issues"
+  },
+  "homepage": "https://github.com/Deadlift3008/lego-robot-remote-control#readme"
+}
