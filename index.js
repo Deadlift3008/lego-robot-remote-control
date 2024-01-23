@@ -12,12 +12,10 @@ poweredUP.on("discover", async (hub) => { // Wait to discover a Hub
     const actions = new Actions42140(motorA, motorB, hub);
     actions.setHoldBrakingStyle();
 
-    await actions.goForward(1000, 70);
-    await actions.turnAround('right');
-    await actions.goForward(300, 100);
-    await actions.rotateLeftOnPlace(180, 65);
-    await actions.goBackward(400, 50);
-    await actions.rotateLeftOnMove(300, 100);
+    await actions.rotateLeftOnMove(100, 100);
+    await actions.rotateRightOnMove(100, 100);
+    await actions.rotateLeftOnMove(100, 100);
+    await actions.rotateRightOnMove(100, 100);
     console.log('Completed');
 });
 

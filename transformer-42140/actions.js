@@ -88,16 +88,18 @@ class Actions {
     // TODO: Пересмотреть все параметры
     async rotateRightOnMove(angle = 90, speed = 40) {
         const degrees = angle * ANGLE_TO_DEGREES_ON_MOVE_CONST;
-        this.motorB.rotateByDegrees(degrees, speed);
+        this.motorB.rotateByDegrees(degrees*2, speed);
         this.motorA.rotateByDegrees(degrees/2, (speed/2) * -1);
         await this.waitForEnd(MOVE_TYPES.rotateOnMove, degrees, speed);
+        console.log('>>>rotateRightOnMove end');
     }
 
     async rotateLeftOnMove(angle = 90, speed = 40) {
         const degrees = angle * ANGLE_TO_DEGREES_ON_MOVE_CONST;
-        this.motorA.rotateByDegrees(degrees, speed * -1);
+        this.motorA.rotateByDegrees(degrees*2, speed * -1);
         this.motorB.rotateByDegrees(degrees/2, speed/2);
         await this.waitForEnd(MOVE_TYPES.rotateOnMove, degrees, speed);
+        console.log('>>>rotateLeftOnMove end');
     }
 
     async waitForEnd(typeOfMove, degrees, speed) {
@@ -109,7 +111,7 @@ class Actions {
                 await this.hub.sleep(degrees * (speed/15));
                 return;
             case MOVE_TYPES.rotateOnMove:
-                await this.hub.sleep(degrees/3 * (speed/15));  
+                await this.hub.sleep(degrees/10 * (speed/15));  
                 return;    
             default: 
                 throw new Error('Default path in waitForEnd is not supported');      
