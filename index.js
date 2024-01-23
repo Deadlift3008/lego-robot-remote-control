@@ -1,4 +1,5 @@
 const PoweredUP = require("node-poweredup");
+const { Actions: Actions42140 } = require("./transformer-42140/actions");
 const poweredUP = new PoweredUP.PoweredUP();
 
 poweredUP.on("discover", async (hub) => { // Wait to discover a Hub
@@ -8,20 +9,16 @@ poweredUP.on("discover", async (hub) => { // Wait to discover a Hub
     const motorB = await hub.waitForDeviceAtPort("B"); // Make sure a motor is plugged into port B
     console.log("Connected");
 
-    while (true) { // Repeat indefinitely
-        console.log("Running motor B at speed 50");
-        motorB.setPower(50); // Start a motor attached to port B to run a 3/4 speed (75) indefinitely
-        console.log("Running motor A at speed 100 for 2 seconds");
-        motorA.setPower(100); // Run a motor attached to port A for 2 seconds at maximum speed (100) then stop
-        await hub.sleep(2000);
-        motorA.brake();
-        await hub.sleep(1000); // Do nothing for 1 second
-        console.log("Running motor A at speed -30 for 1 second");
-        motorA.setPower(-30); // Run a motor attached to port A for 2 seconds at 1/2 speed in reverse (-50) then stop
-        await hub.sleep(2000);
-        motorA.brake();
-        await hub.sleep(1000); // Do nothing for 1 second
-    }
+    const actions = new Actions42140(motorA, motorB, hub);
+    actions.setHoldBrakingStyle();
+
+    await actions.goForward(1000, 70);
+    await actions.turnAround('right');
+    await actions.goForward(300, 100);
+    await actions.rotateLeftOnPlace(180, 65);
+    await actions.goBackward(400, 50);
+    await actions.rotateLeftOnMove(300, 100);
+    console.log('Completed');
 });
 
 poweredUP.scan(); // Start scanning for Hubs
